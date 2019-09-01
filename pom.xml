@@ -15,6 +15,7 @@
 		<module>nanithing-model</module>
 		<module>nanithing-service-interfaces</module>
 		<module>nanithing-web</module>
+		<module>nanithing-dto</module>
 		<module>nanithing-dao-interfaces</module>
 		<module>nanithing-services</module>
 		<module>nanithing-types</module>

@@ -7,7 +7,7 @@
 		<artifactId>nanithing-parent</artifactId>
 		<version>1.0.0-SNAPSHOT</version>
 	</parent>
-	
+
 	<artifactId>nanithing-web</artifactId>
 	
 	<name>Nanithing: The web application</name>
@@ -16,7 +16,7 @@
 	<properties>
 		<jvm.args>-Dquarkus.datasource.url=${database.nanithing.url} -Dquarkus.datasource.username=${database.nanithing.username} -Dquarkus.datasource.password=${database.nanithing.password}</jvm.args>
 	</properties>
-	
+
 	<dependencies>
 		<!-- QUARKUS -->
 		<dependency>
@@ -54,7 +54,7 @@
 			<groupId>javax.enterprise</groupId>
 			<artifactId>cdi-api</artifactId>
 		</dependency>
-		
+
 		<!-- PROJECT -->
 		<dependency>
 			<groupId>nanithing</groupId>
@@ -73,10 +73,15 @@
 		</dependency>
 		<dependency>
 			<groupId>nanithing</groupId>
+			<artifactId>nanithing-dto</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>nanithing</groupId>
 			<artifactId>nanithing-services</artifactId>
 			<version>${project.version}</version>
 		</dependency>
-		
+
 		<!-- TEST -->
 		<dependency>
 			<groupId>org.jboss.resteasy</groupId>
@@ -113,7 +118,7 @@
 			<artifactId>mockito-junit-jupiter</artifactId>
 		</dependency>
 	</dependencies>
-	
+
 	<build>
 		<resources>
 			<resource>
