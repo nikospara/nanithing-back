@@ -13,7 +13,11 @@
 	
 	<modules>
 		<module>nanithing-model</module>
+		<module>nanithing-service-interfaces</module>
 		<module>nanithing-web</module>
+		<module>nanithing-dao-interfaces</module>
+		<module>nanithing-services</module>
+		<module>nanithing-types</module>
 	</modules>
 	
 	<properties>
@@ -37,6 +41,32 @@
 				<version>${version.quarkus}</version>
 				<type>pom</type>
 				<scope>import</scope>
+			</dependency>
+			
+			<!-- SPECS -->
+			<dependency>
+				<groupId>javax.annotation</groupId>
+				<artifactId>javax.annotation-api</artifactId>
+				<version>1.3.2</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>javax.enterprise</groupId>
+				<artifactId>cdi-api</artifactId>
+				<version>2.0.SP1</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>javax.transaction</groupId>
+				<artifactId>javax.transaction-api</artifactId>
+				<version>1.3</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>javax.validation</groupId>
+				<artifactId>validation-api</artifactId>
+				<version>2.0.1.Final</version>
+				<scope>provided</scope>
 			</dependency>
 			
 			<!-- OTHER -->

@@ -13,6 +13,7 @@ public interface Game {
 	 * 
 	 * @return The game id
 	 */
+	@Nullable
 	String getId();
 	
 	/**
@@ -20,6 +21,7 @@ public interface Game {
 	 * 
 	 * @return The state of the game
 	 */
+	@Nullable
 	GameState getState();
 	
 	/**
@@ -27,6 +29,7 @@ public interface Game {
 	 * 
 	 * @return The visibility of the game
 	 */
+	@Nullable
 	GameVisibility getVisibility();
 	
 	/**
