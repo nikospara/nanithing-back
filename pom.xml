@@ -29,8 +29,8 @@
 
 		<version.junit.jupiter>5.5.1</version.junit.jupiter>
 		<version.mockito>3.0.0</version.mockito>
-		<version.quarkus>0.21.1</version.quarkus>
-		<version.resteasy-test>3.6.3.Final</version.resteasy-test>
+		<version.quarkus>0.21.2</version.quarkus>
+		<version.resteasy-test>4.2.0.Final</version.resteasy-test><!-- Defined in quarkus-bom -->
 	</properties>
 	
 	<dependencyManagement>
@@ -90,6 +90,24 @@
 			</dependency>
 			
 			<!-- TEST -->
+			<dependency>
+				<groupId>org.jboss.resteasy</groupId>
+				<artifactId>resteasy-cdi</artifactId>
+				<version>${version.resteasy-test}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.jboss.resteasy</groupId>
+				<artifactId>resteasy-core</artifactId>
+				<version>${version.resteasy-test}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.jboss.resteasy</groupId>
+				<artifactId>resteasy-json-binding-provider</artifactId>
+				<version>${version.resteasy-test}</version>
+				<scope>test</scope>
+			</dependency>
 			<dependency>
 				<groupId>org.jboss.weld</groupId>
 				<artifactId>weld-junit5</artifactId>
