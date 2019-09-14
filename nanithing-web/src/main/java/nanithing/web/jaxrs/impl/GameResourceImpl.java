@@ -8,9 +8,11 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CompletionStage;
 
 import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 
 import nanithing.model.Game;
 import nanithing.model.ImmutableGame;
+import nanithing.services.GameService;
 import nanithing.web.jaxrs.GameResource;
 
 /**
@@ -18,6 +20,9 @@ import nanithing.web.jaxrs.GameResource;
  */
 @RequestScoped
 public class GameResourceImpl implements GameResource {
+
+	@Inject
+	private GameService gameService;
 
 	@Override
 	public CompletionStage<Game> getById(String id) {
