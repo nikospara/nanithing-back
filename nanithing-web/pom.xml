@@ -10,11 +10,19 @@
 	
 	<artifactId>nanithing-web</artifactId>
 	
-	<name>Nanithing: the web application</name>
+	<name>Nanithing: The web application</name>
 	<description>Nanithing: The web application</description>
+
+	<properties>
+		<jvm.args>-Dquarkus.datasource.url=${database.nanithing.url} -Dquarkus.datasource.username=${database.nanithing.username} -Dquarkus.datasource.password=${database.nanithing.password}</jvm.args>
+	</properties>
 	
 	<dependencies>
 		<!-- QUARKUS -->
+		<dependency>
+			<groupId>io.quarkus</groupId>
+			<artifactId>quarkus-hibernate-orm</artifactId>
+		</dependency>
 		<dependency><!-- This dependency would be included anyway from quarkus-resteasy-jsonb, declaring explicitly for completeness. -->
 			<groupId>io.quarkus</groupId>
 			<artifactId>quarkus-resteasy</artifactId>
@@ -22,6 +30,15 @@
 		<dependency>
 			<groupId>io.quarkus</groupId>
 			<artifactId>quarkus-resteasy-jsonb</artifactId>
+		</dependency>
+		<!--
+			THIS DEPENDENCY SHOULD BE DECLARED IN THE h2 PROFILE, BUT QUARKUS SEEMS NOT TO ACCEPT IT.
+
+			See https://github.com/quarkusio/quarkus/issues/3702 and https://github.com/quarkusio/quarkus/issues/4147
+		-->
+		<dependency>
+			<groupId>io.quarkus</groupId>
+			<artifactId>quarkus-jdbc-h2</artifactId>
 		</dependency>
 
 		<!-- SPECS -->
@@ -35,6 +52,11 @@
 		</dependency>
 		
 		<!-- PROJECT -->
+		<dependency>
+			<groupId>nanithing</groupId>
+			<artifactId>nanithing-dao-jpa</artifactId>
+			<version>${project.version}</version>
+		</dependency>
 		<dependency>
 			<groupId>nanithing</groupId>
 			<artifactId>nanithing-jaxrs-interfaces</artifactId>
@@ -89,6 +111,13 @@
 	</dependencies>
 	
 	<build>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
+
 		<plugins>
 			<plugin>
 				<groupId>io.quarkus</groupId>
@@ -111,4 +140,20 @@
 			</plugin>
 		</plugins>
 	</build>
+
+	<profiles>
+		<profile>
+			<id>h2</id>
+			<dependencies>
+				<!--
+					THIS DEPENDENCY HAS NO EFFECT YET, DUE TO https://github.com/quarkusio/quarkus/issues/3702
+					AND https://github.com/quarkusio/quarkus/issues/4147
+				-->
+				<dependency>
+					<groupId>io.quarkus</groupId>
+					<artifactId>quarkus-jdbc-h2</artifactId>
+				</dependency>
+			</dependencies>
+		</profile>
+	</profiles>
 </project>

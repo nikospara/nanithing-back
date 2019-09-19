@@ -22,7 +22,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import nanithing.dao.GameDao;
 import nanithing.model.Game;
 import nanithing.model.GameState;
-import nanithing.services.authorization.Authorization;
+import nanithing.services.impl.authorization.Authorization;
 import nanithing.types.authorization.ConflictingStateException;
 import nanithing.types.authorization.NotAuthenticatedException;
 

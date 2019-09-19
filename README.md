@@ -2,12 +2,80 @@
 
 A backend for the Name-Animal-Thing game we used to play in school, implemented with enterprise technologies.
 
-## Launching
+## The build system
 
-Development launch:
+The build system is Maven and is configured by a set of properties and profiles, as follows:
+
+### Build properties
+
+The following properties are local to an environment; they can be specified as `-Dpropname=propvalue` command line arguments,
+or placed in a local Maven profile in `~/.m2/settings.xml`.
+
+- `database.nanithing.url`: The JDBC URL of the database
+- `database.nanithing.username`: The DB user name
+- `database.nanithing.password`: The DB password
+- `db.env` (default: `dev`): Needed only by Liquibase to indicate which environment-specific [contexts](https://www.liquibase.org/documentation/contexts.html)
+will it activate; e.g. `dev` will activate the `data-dev` context
+
+### Build profiles
+
+- `h2`: Activate the H2 database for the server and Liquibase (currently this is the only DB option)
+- `dbupdate`: Exwcute Liquibase to bring the database up-to-date (in the case of embedded H2 it will create it if it doesn't exist; just make sure that the directory exists)
+- `test-h2`: This will activate the DAO tests, using an in-memory H2 database
+
+## Building
+
+### Creating/updating the DB
+
+Decide the database to use and make sure Maven picks up the corresponding properties.
+
+Assuming that the properties are defined through a Maven profile, e.g. like the following in `~/.m2/settings.xml`:
+
+```xml
+                <profile>
+                        <id>nanithing-local-h2</id>
+                        <properties>
+                                <database.nanithing.url>jdbc:h2:/home/myuser/h2/nanithing</database.nanithing.url>
+                                <database.nanithing.username>sa</database.nanithing.username>
+                                <database.nanithing.password>sa</database.nanithing.password>
+                        </properties>
+                </profile>
+```
+
+Then make sure that the directory `/home/myuser/h2/nanithing` exists and run:
 
 ```shell
-mvn process-classes quarkus:dev
+mvn process-resources -Ph2,dbupdate,nanithing-local-h2
+```
+
+Otherwise, you have to specify the properties by command line:
+
+```shell
+mvn process-resources -Ph2,dbupdate -Ddatabase.nanithing.url=... -Ddatabase.nanithing.username=... -Ddatabase.nanithing.password=...
+```
+
+### Building the JAR artifacts
+
+```shell
+mvn clean package -Ph2,test-h2
+```
+
+### Building the native artifacts
+
+**TODO**
+
+### Building the Docker image
+
+**TODO**
+
+## Launching
+
+You have to build first! At least `mvn ... package` is required.
+
+Development launch, assuming the profile `nanithing-local-h2` is defined in `settings.xml` as above:
+
+```shell
+mvn process-classes quarkus:dev -Ph2,nanithing-local-h2
 ```
 
 Note that it requires the `process-classes` goal, not just `compile`. The reason is that at least the `nanithing-jaxrs-interfaces`	
