@@ -1,4 +1,4 @@
-package nanithing.services.authorization;
+package nanithing.services.impl.authorization;
 
 /**
  * Helper methods for authorizing the access to services.

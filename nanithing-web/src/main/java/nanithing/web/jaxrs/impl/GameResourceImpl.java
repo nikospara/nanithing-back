@@ -9,6 +9,7 @@ import java.util.concurrent.CompletionStage;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
+import javax.ws.rs.NotFoundException;
 
 import nanithing.model.Game;
 import nanithing.model.ImmutableGame;
@@ -22,12 +23,11 @@ import nanithing.web.jaxrs.GameResource;
 public class GameResourceImpl implements GameResource {
 
 	@Inject
-	private GameService gameService;
+	GameService gameService;
 
 	@Override
 	public CompletionStage<Game> getById(String id) {
-		Game game = gameService.findById(id);
-		return CompletableFuture.completedStage(game);
+		return CompletableFuture.completedStage(gameService.findById(id));
 	}
 
 	@Override

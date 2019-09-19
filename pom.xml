@@ -19,6 +19,8 @@
 		<module>nanithing-services</module>
 		<module>nanithing-types</module>
 		<module>nanithing-jaxrs-interfaces</module>
+		<module>nanithing-dao-jpa</module>
+		<module>nanithing-migrations-sql</module>
 	</modules>
 	
 	<properties>
@@ -27,7 +29,11 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
+		<db.env>dev</db.env>
+
+		<version.h2>1.4.199</version.h2>
 		<version.junit.jupiter>5.5.1</version.junit.jupiter>
+		<version.liquibase>3.8.0</version.liquibase>
 		<version.mockito>3.0.0</version.mockito>
 		<version.quarkus>0.22.0</version.quarkus>
 		<version.resteasy-test>4.2.0.Final</version.resteasy-test><!-- Defined in quarkus-bom -->
@@ -82,6 +88,11 @@
 				<artifactId>value</artifactId>
 				<version>2.7.5</version>
 				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.liquibase</groupId>
+				<artifactId>liquibase-core</artifactId>
+				<version>${version.liquibase}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.slf4j</groupId>
@@ -273,6 +284,47 @@
 					</plugin>
 				</plugins>
 			</build>
+		</profile>
+
+		<profile>
+			<id>test-h2</id>
+
+			<properties>
+				<database-test.active>true</database-test.active>
+				<database-test.hibernate.dialect>org.hibernate.dialect.H2Dialect</database-test.hibernate.dialect>
+				<database-test.url>jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1</database-test.url>
+				<database-test.username>sa</database-test.username>
+				<database-test.password>sa</database-test.password>
+			</properties>
+
+			<dependencyManagement>
+				<dependencies>
+					<dependency>
+						<groupId>com.h2database</groupId>
+						<artifactId>h2</artifactId>
+						<version>${version.h2}</version>
+					</dependency>
+				</dependencies>
+			</dependencyManagement>
+		</profile>
+
+		<profile>
+			<id>h2</id>
+
+			<properties>
+				<database.driver>org.h2.Driver</database.driver>
+				<database.hibernate.dialect>org.hibernate.dialect.H2Dialect</database.hibernate.dialect>
+			</properties>
+
+			<dependencyManagement>
+				<dependencies>
+					<dependency>
+						<groupId>com.h2database</groupId>
+						<artifactId>h2</artifactId>
+						<version>${version.h2}</version>
+					</dependency>
+				</dependencies>
+			</dependencyManagement>
 		</profile>
 	</profiles>
 </project>

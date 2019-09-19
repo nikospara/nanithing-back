@@ -17,5 +17,10 @@
 			<artifactId>nanithing-model</artifactId>
 			<version>${project.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>nanithing</groupId>
+			<artifactId>nanithing-types</artifactId>
+			<version>${project.version}</version>
+		</dependency>
 	</dependencies>
 </project>

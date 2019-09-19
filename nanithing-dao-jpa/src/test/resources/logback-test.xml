@@ -1,0 +1,15 @@
+<configuration>
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>%d{HH:mm:ss} %-5level %logger -- %msg%n</pattern>
+		</encoder>
+	</appender>
+	
+	<!--
+		This configuration reduces the verbosity of Liquibase & Hibernate logs for
+		tests in this module; you may want to set it to INFO or DEBUG for debugging.
+	-->
+	<root level="WARN">
+		<appender-ref ref="STDOUT" />
+	</root>
+</configuration>

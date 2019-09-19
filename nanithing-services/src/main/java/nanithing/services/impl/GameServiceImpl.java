@@ -4,18 +4,20 @@ import java.util.UUID;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
+import javax.transaction.Transactional;
 
 import nanithing.dao.GameDao;
 import nanithing.model.Game;
 import nanithing.model.GameState;
 import nanithing.model.ImmutableGame;
 import nanithing.services.GameService;
-import nanithing.services.authorization.Authorization;
+import nanithing.services.impl.authorization.Authorization;
 
 /**
  * Implementation of the {@link GameService}.
  */
 @ApplicationScoped
+@Transactional
 public class GameServiceImpl implements GameService {
 	
 	private Authorization authorization;
