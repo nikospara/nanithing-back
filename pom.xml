@@ -29,7 +29,7 @@
 
 		<version.junit.jupiter>5.5.1</version.junit.jupiter>
 		<version.mockito>3.0.0</version.mockito>
-		<version.quarkus>0.21.2</version.quarkus>
+		<version.quarkus>0.22.0</version.quarkus>
 		<version.resteasy-test>4.2.0.Final</version.resteasy-test><!-- Defined in quarkus-bom -->
 	</properties>
 	
