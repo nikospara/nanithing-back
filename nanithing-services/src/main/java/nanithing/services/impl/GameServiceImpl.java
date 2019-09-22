@@ -46,6 +46,11 @@ public class GameServiceImpl implements GameService {
 	}
 
 	@Override
+	public Game findById(String id) {
+		return gameDao.findById(id);
+	}
+
+	@Override
 	public Game create(Game game) {
 		authorization.requireLogin();
 		gameAuthorization.requireNoActiveGamesForCurrentUser();
