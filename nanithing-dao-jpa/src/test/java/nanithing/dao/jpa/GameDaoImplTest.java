@@ -3,6 +3,7 @@ package nanithing.dao.jpa;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.fail;
 
 import java.util.UUID;
 import javax.persistence.EntityManager;
@@ -13,6 +14,7 @@ import nanithing.model.GameVisibility;
 import nanithing.model.ImmutableGame;
 import nanithing.test.JpaDaoExtension;
 import nanithing.test.LiquibaseExtension;
+import nanithing.types.entity.EntityDoesNotExistException;
 import org.hibernate.stat.Statistics;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -76,7 +78,12 @@ public class GameDaoImplTest {
 		Game game = sut.findById(GAME_ID);
 		assertNotNull(game);
 		assertEquals(GAME_ID, game.getId());
-		Game shouldBeNull = sut.findById("NON EXISTING ID");
-		assertNull(shouldBeNull);
+		try {
+			Game shouldBeNull = sut.findById("NON EXISTING ID");
+			fail("should have thrown");
+		}
+		catch( EntityDoesNotExistException expected ) {
+			// expected
+		}
 	}
 }
