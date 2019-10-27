@@ -11,6 +11,8 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
 import nanithing.model.Game;
+import org.eclipse.microprofile.openapi.annotations.responses.APIResponse;
+import org.eclipse.microprofile.openapi.annotations.responses.APIResponses;
 
 /**
  * The Game resource.
@@ -20,6 +22,9 @@ public interface GameResource {
 	@GET
 	@Path("/{id}")
 	@Produces(APPLICATION_JSON)
+	@APIResponses(
+		@APIResponse(responseCode = "200", description = "Successfully returned a game for the given id")
+	)
 	CompletionStage<Game> getById(
 			@PathParam("id")
 			String id
@@ -27,6 +32,10 @@ public interface GameResource {
 
 	@POST
 	@Produces(APPLICATION_JSON)
+	@APIResponses(
+			{@APIResponse(responseCode = "200", description = "Successfully created a game"),
+			@APIResponse(responseCode = "400", description = "Invalid game parameter")}
+	)
 	CompletionStage<Game> create(
 			Game game
 	);

@@ -23,6 +23,10 @@
 			<groupId>io.quarkus</groupId>
 			<artifactId>quarkus-hibernate-orm</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>io.quarkus</groupId>
+			<artifactId>quarkus-smallrye-openapi</artifactId>
+		</dependency>
 		<dependency><!-- This dependency would be included anyway from quarkus-resteasy-jsonb, declaring explicitly for completeness. -->
 			<groupId>io.quarkus</groupId>
 			<artifactId>quarkus-resteasy</artifactId>
