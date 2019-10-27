@@ -81,3 +81,9 @@ mvn process-classes quarkus:dev -Ph2,nanithing-local-h2
 Note that it requires the `process-classes` goal, not just `compile`. The reason is that at least the `nanithing-jaxrs-interfaces`	
 project needs to be indexed by Jandex, in order to activate the JAX-RS resources that implement those interfaces, and the Jandex goal
 runs in the `process-classes` phase, which is right after `compile` [by default](https://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html).
+
+
+## SWAGGER
+
+Quarkus can expose its API description through an OpenAPI specification. You can see the API at `your_domain/swagger-ui` and find its responding .yaml in `your_domain/openapi`. 
+For reference you can check the following [tutorial](https://quarkus.io/guides/openapi-swaggerui-guide). 

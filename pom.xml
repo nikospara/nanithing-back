@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	
+
 	<groupId>nanithing</groupId>
 	<artifactId>nanithing-parent</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
-	
+
 	<name>Nanithing: parent</name>
 	<description>Nanithing: Parent</description>
-	
+
 	<packaging>pom</packaging>
-	
+
 	<modules>
 		<module>nanithing-model</module>
 		<module>nanithing-service-interfaces</module>
@@ -22,7 +22,7 @@
 		<module>nanithing-dao-jpa</module>
 		<module>nanithing-migrations-sql</module>
 	</modules>
-	
+
 	<properties>
 		<version.java>11</version.java>
 
@@ -34,11 +34,12 @@
 		<version.h2>1.4.199</version.h2>
 		<version.junit.jupiter>5.5.1</version.junit.jupiter>
 		<version.liquibase>3.8.0</version.liquibase>
+		<version.microprofile-openapi>1.1.2</version.microprofile-openapi><!-- Defined in quarkus-bom -->
 		<version.mockito>3.0.0</version.mockito>
 		<version.quarkus>0.23.2</version.quarkus>
 		<version.resteasy-test>4.3.0.Final</version.resteasy-test><!-- Defined in quarkus-bom -->
 	</properties>
-	
+
 	<dependencyManagement>
 		<dependencies>
 			<!-- QUARKUS  -->
@@ -49,7 +50,7 @@
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
-			
+
 			<!-- SPECS -->
 			<dependency>
 				<groupId>javax.annotation</groupId>
@@ -76,6 +77,12 @@
 				<scope>provided</scope>
 			</dependency>
 			<dependency>
+				<groupId>org.eclipse.microprofile.openapi</groupId>
+				<artifactId>microprofile-openapi-api</artifactId>
+				<version>${version.microprofile-openapi}</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
 				<groupId>org.jboss.spec.javax.ws.rs</groupId>
 				<artifactId>jboss-jaxrs-api_2.1_spec</artifactId>
 				<version>1.0.3.Final</version>
@@ -99,7 +106,7 @@
 				<artifactId>slf4j-api</artifactId>
 				<version>1.7.25</version>
 			</dependency>
-			
+
 			<!-- TEST -->
 			<dependency>
 				<groupId>org.jboss.resteasy</groupId>
@@ -151,11 +158,10 @@
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
-	
+
 	<build>
 		<plugins>
 			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-enforcer-plugin</artifactId>
 				<version>3.0.0-M2</version>
 				<executions>
@@ -173,7 +179,7 @@
 				</executions>
 			</plugin>
 		</plugins>
-		
+
 		<pluginManagement>
 			<plugins>
 				<plugin>
@@ -195,7 +201,6 @@
 					</configuration>
 				</plugin>
 				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-dependency-plugin</artifactId>
 					<version>3.1.1</version>
 				</plugin>
