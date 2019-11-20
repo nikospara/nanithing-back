@@ -8,15 +8,11 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 
-import nanithing.dto.GameDTO;
 import nanithing.model.Game;
+import nanithing.web.jaxrs.GameDTO;
 
 @Path("/hello")
 public interface GreetingResource {
-
-	@GET
-	@Produces(APPLICATION_JSON)
-	CompletionStage<Game> hello();
 
 	@GET
 	@Produces(APPLICATION_JSON)

@@ -1,12 +1,13 @@
-package nanithing.dto;
+package nanithing.web.mappers;
 
 import nanithing.model.ImmutableGame;
+import nanithing.web.jaxrs.GameDTO;
 import org.mapstruct.Mapper;
 
 /**
  * @author Leon
  */
-@Mapper
+@Mapper(componentModel="cdi")
 public interface GameMapper {
 
 	GameDTO mapDomainToDTO(ImmutableGame game);
