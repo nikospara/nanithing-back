@@ -1,4 +1,4 @@
-package nanithing.dto;
+package nanithing.web.jaxrs;
 
 import nanithing.model.GameState;
 import nanithing.model.GameVisibility;
