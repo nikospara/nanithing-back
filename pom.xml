@@ -36,7 +36,7 @@
 		<version.liquibase>3.8.0</version.liquibase>
 		<version.microprofile-openapi>1.1.2</version.microprofile-openapi><!-- Defined in quarkus-bom, find it in the dependency tree of quarkus-smallrye-openapi -->
 		<version.mockito>3.1.0</version.mockito>
-		<version.quarkus>1.0.0.CR2</version.quarkus>
+		<version.quarkus>1.0.1.Final</version.quarkus>
 		<version.resteasy-test>4.4.1.Final</version.resteasy-test><!-- Defined in quarkus-bom, resteasy.version -->
 	</properties>
 

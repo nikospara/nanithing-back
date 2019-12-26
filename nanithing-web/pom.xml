@@ -35,6 +35,10 @@
 			<groupId>io.quarkus</groupId>
 			<artifactId>quarkus-resteasy-jsonb</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>io.quarkus</groupId>
+			<artifactId>quarkus-oidc</artifactId>
+		</dependency>
 		<!--
 			THIS DEPENDENCY SHOULD BE DECLARED IN THE h2 PROFILE, BUT QUARKUS SEEMS NOT TO ACCEPT IT.
 

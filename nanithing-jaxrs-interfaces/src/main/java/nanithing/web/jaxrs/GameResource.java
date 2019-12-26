@@ -11,6 +11,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
 import nanithing.model.Game;
+import io.quarkus.security.Authenticated;
 import org.eclipse.microprofile.openapi.annotations.responses.APIResponse;
 import org.eclipse.microprofile.openapi.annotations.responses.APIResponses;
 
@@ -18,6 +19,7 @@ import org.eclipse.microprofile.openapi.annotations.responses.APIResponses;
  * The Game resource.
  */
 @Path("/games")
+@Authenticated
 public interface GameResource {
 	@GET
 	@Path("/{id}")

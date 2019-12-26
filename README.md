@@ -83,7 +83,20 @@ project needs to be indexed by Jandex, in order to activate the JAX-RS resources
 runs in the `process-classes` phase, which is right after `compile` [by default](https://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html).
 
 
-## SWAGGER
+## Swagger
 
 Quarkus can expose its API description through an OpenAPI specification. You can see the API at `your_domain/swagger-ui` and find its responding .yaml in `your_domain/openapi`. 
-For reference you can check the following [tutorial](https://quarkus.io/guides/openapi-swaggerui-guide). 
+For reference you can check the following [tutorial](https://quarkus.io/guides/openapi-swaggerui-guide).
+
+## Keycloak 
+
+To install keycloak on your machine, please read the guide [here](https://www.keycloak.org/docs/latest/getting_started/index.html).
+To run it locally on your machine proceed with: 
+- Linux/Unix
+```shell
+$ cd bin
+$ sudo ./standalone.sh -Djboss.socket.binding.port-offset=100
+```
+
+Afterwards, import the realm-export.json under nanithing-web package to your keycloak server.
+Whenever you make a REST request, you will be redirected to a login page and asked for a username/password.
