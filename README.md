@@ -99,4 +99,5 @@ $ sudo ./standalone.sh -Djboss.socket.binding.port-offset=100
 ```
 
 Afterwards, import the realm-export.json under nanithing-web package to your keycloak server.
-Whenever you make a REST request, you will be redirected to a login page and asked for a username/password.
+Initially to receive an authentication token, perform a GET request to http://localhost:8080/api/v0/users/user URL. 
+ Afterwards, you will be redirected to a login page and asked for a username/password.

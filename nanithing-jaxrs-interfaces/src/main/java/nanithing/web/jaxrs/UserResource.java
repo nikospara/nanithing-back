@@ -2,7 +2,6 @@ package nanithing.web.jaxrs;
 
 
 import io.quarkus.security.identity.SecurityIdentity;
-import javax.annotation.security.RolesAllowed;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
